@@ -557,7 +557,7 @@ async def play(_, message: Message):
         )
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
+        thumb_name = "https://telegra.ph/file/653185c93f89b0f7cdf32.jpg"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
@@ -636,7 +636,7 @@ async def play(_, message: Message):
             toxxt = "**Select the song you want to play**\n\n"
             j = 0
             useer=user_name
-            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣",]
+            emojilist = ["①","②","③","④","⑤",]
 
             while j < 5:
                 toxxt += f"{emojilist[j]} <b>Title - [{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})</b>\n"
@@ -648,13 +648,13 @@ async def play(_, message: Message):
             koyboard = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("1️⃣", callback_data=f'plll 0|{query}|{user_id}'),
-                        InlineKeyboardButton("2️⃣", callback_data=f'plll 1|{query}|{user_id}'),
-                        InlineKeyboardButton("3️⃣", callback_data=f'plll 2|{query}|{user_id}'),
+                        InlineKeyboardButton("①", callback_data=f'plll 0|{query}|{user_id}'),
+                        InlineKeyboardButton("②", callback_data=f'plll 1|{query}|{user_id}'),
+                        InlineKeyboardButton("③", callback_data=f'plll 2|{query}|{user_id}'),
                     ],
                     [
-                        InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
-                        InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}'),
+                        InlineKeyboardButton("④", callback_data=f'plll 3|{query}|{user_id}'),
+                        InlineKeyboardButton("⑤", callback_data=f'plll 4|{query}|{user_id}'),
                     ],
                     [InlineKeyboardButton(text="❌", callback_data="cls")],
                 ]
@@ -984,7 +984,7 @@ async def deezer(client: Client, message_: Message):
         url = songs.result[0].url
         artist = songs.result[0].artist
         duration = songs.result[0].duration
-        thumbnail = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
+        thumbnail = "https://telegra.ph/file/653185c93f89b0f7cdf32.jpg"
 
     except:
         await res.edit("Found Literally Nothing, You Should Work On Your English!")
