@@ -193,13 +193,13 @@ def r_ply(type_):
     mar = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("⏹", "leave"),
+                InlineKeyboardButton("■", "leave"),
                 InlineKeyboardButton("⏸", "puse"),
-                InlineKeyboardButton("▶️", "resume"),
-                InlineKeyboardButton("⏭", "skip"),
+                InlineKeyboardButton("⊳", "resume"),
+                InlineKeyboardButton("⋙", "skip"),
             ],
             [
-                InlineKeyboardButton("Playlist 📖", "playlist"),
+                InlineKeyboardButton("Playlist ☲", "playlist"),
             ],
             [InlineKeyboardButton("❌ Close", "cls")],
         ]
@@ -407,13 +407,13 @@ async def m_cb(b, cb):
         marr = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("⏹", "leave"),
+                    InlineKeyboardButton("■", "leave"),
                     InlineKeyboardButton("⏸", "puse"),
-                    InlineKeyboardButton("▶️", "resume"),
-                    InlineKeyboardButton("⏭", "skip"),
+                    InlineKeyboardButton("⊳", "resume"),
+                    InlineKeyboardButton("⋙", "skip"),
                 ],
                 [
-                    InlineKeyboardButton("Playlist 📖", "playlist"),
+                    InlineKeyboardButton("Playlist ☲", "playlist"),
                 ],
                 [InlineKeyboardButton("❌ Close", "cls")],
             ]
@@ -433,7 +433,7 @@ async def m_cb(b, cb):
                 await callsmusic.set_stream(
                     chet_id, queues.get(chet_id)["file"]
                 )
-                await cb.answer.reply_text("✅ <b>Skipped</b>")
+                await cb.answer.reply_text(" <b>Skipped</b>")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
                     f"- Skipped track\n- Now Playing **{qeue[0][0]}**"
@@ -857,12 +857,10 @@ async def ytplay(_, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                InlineKeyboardButton("Menu ☲ ", callback_data="menu"),
             ],
             [
-                InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                InlineKeyboardButton(text="⛻ YouTube", url=f"{url}"),
             ],
             [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
         ]
@@ -903,7 +901,7 @@ async def ytplay(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music 😎".format(
+            caption="⊳ <b>Playing</b> here the song requested by {} via Youtube Music 😎".format(
                 message.from_user.mention()
             ),
         )
@@ -1000,8 +998,7 @@ async def deezer(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                InlineKeyboardButton("Menu ☲ ", callback_data="menu"),
             ],
             [InlineKeyboardButton(text="Listen On Deezer 🎬", url=f"{url}")],
             [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
@@ -1136,7 +1133,6 @@ async def jiosaavn(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
                 InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
             ],
             [
