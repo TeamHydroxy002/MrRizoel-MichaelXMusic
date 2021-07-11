@@ -1,20 +1,3 @@
-# Daisyxmusic (Telegram bot project)
-# Copyright (C) 2021  Inukaasith
-# Copyright (C) 2021  TheHamkerCat (Python_ARQ)
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
 import json
 import os
 from os import path
@@ -193,13 +176,13 @@ def r_ply(type_):
     mar = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("■", "leave"),
+                InlineKeyboardButton("⏹", "leave"),
                 InlineKeyboardButton("⏸", "puse"),
-                InlineKeyboardButton("⊳", "resume"),
-                InlineKeyboardButton("⋙", "skip"),
+                InlineKeyboardButton("▶️", "resume"),
+                InlineKeyboardButton("⏭", "skip"),
             ],
             [
-                InlineKeyboardButton("Playlist ☲", "playlist"),
+                InlineKeyboardButton("Playlist 📖", "playlist"),
             ],
             [InlineKeyboardButton("❌ Close", "cls")],
         ]
@@ -407,13 +390,13 @@ async def m_cb(b, cb):
         marr = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("■", "leave"),
+                    InlineKeyboardButton("⏹", "leave"),
                     InlineKeyboardButton("⏸", "puse"),
-                    InlineKeyboardButton("⊳", "resume"),
-                    InlineKeyboardButton("⋙", "skip"),
+                    InlineKeyboardButton("▶️", "resume"),
+                    InlineKeyboardButton("⏭", "skip"),
                 ],
                 [
-                    InlineKeyboardButton("Playlist ☲", "playlist"),
+                    InlineKeyboardButton("Playlist 📖", "playlist"),
                 ],
                 [InlineKeyboardButton("❌ Close", "cls")],
             ]
@@ -433,7 +416,7 @@ async def m_cb(b, cb):
                 await callsmusic.set_stream(
                     chet_id, queues.get(chet_id)["file"]
                 )
-                await cb.answer.reply_text(" <b>Skipped</b>")
+                await cb.answer.reply_text("✅ <b>Skipped</b>")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
                     f"- Skipped track\n- Now Playing **{qeue[0][0]}**"
@@ -557,7 +540,7 @@ async def play(_, message: Message):
         )
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/653185c93f89b0f7cdf32.jpg"
+        thumb_name = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
@@ -636,7 +619,7 @@ async def play(_, message: Message):
             toxxt = "**Select the song you want to play**\n\n"
             j = 0
             useer=user_name
-            emojilist = ["①","②","③","④","⑤",]
+            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣",]
 
             while j < 5:
                 toxxt += f"{emojilist[j]} <b>Title - [{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})</b>\n"
@@ -648,13 +631,13 @@ async def play(_, message: Message):
             koyboard = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("①", callback_data=f'plll 0|{query}|{user_id}'),
-                        InlineKeyboardButton("②", callback_data=f'plll 1|{query}|{user_id}'),
-                        InlineKeyboardButton("③", callback_data=f'plll 2|{query}|{user_id}'),
+                        InlineKeyboardButton("1️⃣", callback_data=f'plll 0|{query}|{user_id}'),
+                        InlineKeyboardButton("2️⃣", callback_data=f'plll 1|{query}|{user_id}'),
+                        InlineKeyboardButton("3️⃣", callback_data=f'plll 2|{query}|{user_id}'),
                     ],
                     [
-                        InlineKeyboardButton("④", callback_data=f'plll 3|{query}|{user_id}'),
-                        InlineKeyboardButton("⑤", callback_data=f'plll 4|{query}|{user_id}'),
+                        InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
+                        InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}'),
                     ],
                     [InlineKeyboardButton(text="❌", callback_data="cls")],
                 ]
@@ -857,10 +840,12 @@ async def ytplay(_, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Menu ☲ ", callback_data="menu"),
+                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
+                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
             ],
             [
-                InlineKeyboardButton(text="⛻ YouTube", url=f"{url}"),
+                InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
+                InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
             ],
             [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
         ]
@@ -901,7 +886,7 @@ async def ytplay(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="⊳ <b>Playing</b> here the song requested by {} via Youtube Music 😎".format(
+            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music 😎".format(
                 message.from_user.mention()
             ),
         )
@@ -982,7 +967,7 @@ async def deezer(client: Client, message_: Message):
         url = songs.result[0].url
         artist = songs.result[0].artist
         duration = songs.result[0].duration
-        thumbnail = "https://telegra.ph/file/653185c93f89b0f7cdf32.jpg"
+        thumbnail = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
 
     except:
         await res.edit("Found Literally Nothing, You Should Work On Your English!")
@@ -998,7 +983,8 @@ async def deezer(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Menu ☲ ", callback_data="menu"),
+                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
+                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
             ],
             [InlineKeyboardButton(text="Listen On Deezer 🎬", url=f"{url}")],
             [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
@@ -1133,6 +1119,7 @@ async def jiosaavn(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
+                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
                 InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
             ],
             [
